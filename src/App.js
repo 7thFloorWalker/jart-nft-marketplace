@@ -4,8 +4,7 @@ import React, { Component } from 'react';
 import './App.css';
 import web3 from './web3';
 import ipfs from './ipfs';
-//import storehash from './storehash';
-import JartNFT from './artifacts/contracts/JartNFT.sol/JartNFT.json';
+import JartNFT from './jartnft';
 
 class App extends Component {
 
@@ -75,11 +74,11 @@ class App extends Component {
       //setState by setting ipfsHash to ipfsHash[0].hash
       this.setState({ ipfsHash:ipfsHash[0].hash });
 
-      // call Ethereum contract method "createToken" and .send IPFS hash to etheruem contract
+      // call Ethereum contract method "createToken" and .send wallet address, IPFS hash and metadata to etheruem contract
       //return the transaction hash from the ethereum contract
       //see, this https://web3js.readthedocs.io/en/1.0/web3-eth-contract.html#methods-mymethod-send
 
-      JartNFT.methods.createToken(this.state.ipfsHash).send({
+      JartNFT.methods.createToken(accounts[0],this.state.ipfsHash,ipfsHash[0].metadata).send({
         from: accounts[0]
       }, (error, transactionHash) => {
         console.log(transactionHash);

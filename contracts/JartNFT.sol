@@ -11,8 +11,11 @@ contract JartNFT is ERC721URIStorage {
     mapping(string => uint8) hashes;
     address contractAddress;
 
-    constructor(address marketplaceAddress) ERC721("Jerrys Artarama Art NFT Market", "JART") {
-        contractAddress = marketplaceAddress;
+    //constructor(address marketplaceAddress) ERC721("Jerrys Artarama Art NFT Market", "JART") {
+    //    contractAddress = marketplaceAddress;
+    //}
+    constructor() ERC721("Jerrys Artarama Art NFT Market", "JART") {
+
     }
 
     function createToken(address recipient, string memory hash, string memory metadata)
